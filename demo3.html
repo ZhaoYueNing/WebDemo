@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>demo3</title>
+  </head>
+  <script type="text/javascript" src="./utils.js" charset="utf-8"></script>
+  <script type="text/javascript" src="./constructors.js" charset="utf-8"></script>
+
+  <script type="text/javascript">
+    function sum(a,b,c){
+      return a+b+c;
+    }
+  </script>
+  <body>
+    <script type="text/javascript">
+      printTitle("demo3");
+      print("方法的length:");
+
+      //返回参数个数
+      println(sum.length);
+      print("方法的构造器：");
+      println(sum.constructor);
+      printTitle("方法的原型");
+
+      //创建对象
+      Persion.prototype.like="soccer";
+
+      var persion = new Persion("zhao",20,1);
+      var persion2 = new Persion("杨",21,0);
+      var dog = new Dog("小白",3,0);
+      println(persion);
+      println(persion.prototype);
+      println(persion.like);
+      Persion.prototype.color="red";
+      persion.color="blue";
+      Persion.prototype.likeColor = function(){
+        println("i like "+this.color);
+      }
+      print(persion.color+"  ");
+      println(persion2.color);
+      persion.likeColor();
+      persion2.likeColor();
+      //apply()
+      print("apply:")
+      var s = persion.toString.apply(dog);
+      println(s);
+
+    </script>
+  </body>
+</html>

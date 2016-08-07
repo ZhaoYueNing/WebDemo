@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>this is js demo</title>
+    <script type="text/javascript">
+      //Persion构造函数
+      function Persion (name,age,sex){
+        this.name=name;
+        this.age=age;
+        this.sex=sex;
+        this.toString=function (){
+          var xb;
+          if (sex==1) {
+            xb='男';
+          }else if(sex==0){
+            xb='女';
+          }else{
+            xb='中性';
+          }
+          return "这个人的名字叫"+this.name+" age="+this.age+" sex="+xb;
+        };
+      }
+      //Dog 构造函数
+      function Dog(name,age,sex){
+        this.name=name;
+        this.age=age;
+        this.sex=sex;
+        this.toString=function (){
+          var xb;
+          if (sex==1) {
+            xb='雄';
+          }else if(sex==0){
+            xb='雌';
+          }else{
+            xb='中性';
+          }
+          return "这条小狗叫"+this.name+" age="+this.age+" sex="+xb;
+        };
+      }
+
+    </script>
+    //导入工具方法js
+    <script type="text/javascript" src="./utils.js"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      printTitle("js学习demo",1);
+      //创建一个人对象
+      var p1 = new Persion("zhao",20,1);
+      var d1 = new Dog("小白",3,0);
+      var p2 = {name:"yang",age:20,sex:0};
+      //弹出tostring方法
+      // alert(p1.toString());
+      printTitle("instanceof",3);
+      document.writeln(p1 instanceof Persion);
+      document.writeln(p1 instanceof Dog);
+      br();
+      document.writeln(d1.constructor);
+      //直接输出对象 会调用toString方法
+      document.writeln(d1);
+      document.writeln(p2);
+      br();
+      printTitle("Array");
+      //Array
+      var arr1 = new Array();
+      arr1.push("a");
+      arr1.push("v");
+      arr1.push("b");
+      arr1.push(3);
+      println(arr1.join(","));
+      //排序
+      arr1.sort();
+      println(arr1);
+      println(arr1.pop());
+      println(arr1);
+      var f_print = print;
+      println(f_print);//输出function print(str){ document.writeln(str); }
+      //用其他对象的方法 使用在本对象上
+      printTitle("call ");
+      var str = d1.toString.call(p1);
+      println(str);
+    </script>
+  </body>
+</html>

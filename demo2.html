@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8"/>
+	<title>demo2 page</title>
+	<script type="text/javascript">
+		//空行
+		function br(){
+			document.writeln("<br/>");
+		}
+		//输出语句
+		function print(str){
+			document.writeln(str);
+		}
+		function printTitle(str,i){
+			var title;
+			if (arguments.length>=2) {
+				title="h"+i;
+			}else{
+				title="h2";
+			}
+			document.writeln("<"+title+">"+str+"</"+title+"><br/>");
+		}
+		//输出带换行
+		function println(str){
+			print(str+"<br/>");
+		}
+	</script>
+</head>
+<body>
+	<script type="text/javascript" >
+		var p = new Object();
+		p.play=function(){
+			alert("playing..");
+		}
+		p.play();
+	</script>
+</body>
