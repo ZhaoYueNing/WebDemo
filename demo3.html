@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>demo3</title>
   </head>
   <script type="text/javascript" src="./utils.js" charset="utf-8"></script>
@@ -25,7 +25,10 @@
 
       //创建对象
       Persion.prototype.like="soccer";
-
+      /**
+        JS的原型拥有实时性
+        添加的属性和方法在之前该构造函数创建的对象都可共享使用
+      **/
       var persion = new Persion("zhao",20,1);
       var persion2 = new Persion("杨",21,0);
       var dog = new Dog("小白",3,0);
@@ -33,6 +36,7 @@
       println(persion.prototype);
       println(persion.like);
       Persion.prototype.color="red";
+      Persion.prototype.arr=[2,3,1,5];
       persion.color="blue";
       Persion.prototype.likeColor = function(){
         println("i like "+this.color);
@@ -45,7 +49,45 @@
       print("apply:")
       var s = persion.toString.apply(dog);
       println(s);
+      //判断一个对象的属性是否是其自身
+      print("persion.hasOwnProperty('color'):");
+      println(persion.hasOwnProperty('color'));
+      for (var i in persion) {
+        if (persion.hasOwnProperty(i)) {
+          println("isOwn["+i+"]:"+persion[i]);
+        }else{
+          println("noOwn["+i+"]:"+persion[i]);
+        }
+      }
+      //为数组原型添加方法
+      //使所有数组都可以调用
+      Array.prototype.inArray=function(a){
+        for (var i = 0; i < this.length; i++) {
+          if (this[i]===a) {
+            return i;
+          }
+        }
+        return false;
+      }
 
+      //创建数组 并查询
+      var arr = [1,5,3,6];
+      println(arr.inArray(3));
+      println(arr.inArray(7));
+      //继承
+      printTitle("继承");
+      function A(){
+        this.a="a";
+      }
+      function B(){
+        this.b="b";
+      }
+      A.prototype=new B();
+      var a = new A();
+      var b = new B();
+      println(a instanceof A);
+      println(a instanceof B);
+      println(b instanceof A);
     </script>
   </body>
 </html>
